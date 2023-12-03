@@ -5,7 +5,7 @@ DIGIT_VALUES = {
     'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9
 }
 
-with open("day1.txt", "r") as file:
+with open("day_01.txt", "r") as file:
     data = file.read()
     data = data.split("\n")
 
