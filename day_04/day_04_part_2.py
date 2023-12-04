@@ -16,10 +16,10 @@ for current_num, line in enumerate(data):
         if num in winning:
             match += 1
 
-    if card_num not in scratchcard_dict:  # Scratchcard 1
+    if card_num not in scratchcard_dict:
         scratchcard_dict[card_num] = 1
 
-    for i in range(scratchcard_dict[card_num]):  # Other scratchcards
+    for i in range(scratchcard_dict[card_num]):
         for j in range(1, match + 1):
             if card_num + j not in scratchcard_dict:
                 scratchcard_dict[card_num + j] = 2
