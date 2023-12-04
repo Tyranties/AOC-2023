@@ -2,4 +2,6 @@
 
 https://adventofcode.com/2023
 
-My solutions in Python.
+Solutions in Python.
+
+_Note: Solutions are not necessarily optimal, but give the correct answer._
