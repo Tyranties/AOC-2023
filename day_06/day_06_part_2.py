@@ -12,8 +12,6 @@ for i, line in enumerate(data):
     else:
         distance_record = line
 
-record_breakers = 0
-
 left = 1
 right = time - 1
 
