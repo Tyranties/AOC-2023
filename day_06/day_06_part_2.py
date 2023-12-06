@@ -1,3 +1,5 @@
+import math
+
 with open("day_06.txt", "r") as file:
     data = file.read()
     data = data.split("\n")
@@ -12,13 +14,13 @@ for i, line in enumerate(data):
     else:
         distance_record = line
 
-left = None
-for speed in range(1, time + 1):
-    distance = (time - speed) * speed
-    if distance > distance_record:
-        left = speed
-        break
+a = -1
+b = time
+c = -distance_record
 
-right = time - left
-ans = right - left + 1
+x_1 = int((-b - math.sqrt(b ** 2 - 4 * a * c)) / (2 * a))
+x_2 = int((-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a))
+
+ans = abs(x_1 - x_2)
+
 print(ans)
