@@ -12,9 +12,8 @@ for i, line in enumerate(data):
     else:
         distance_record = line
 
-left = 1
-
-for speed in range(left, time + 1):
+left = None
+for speed in range(1, time + 1):
     distance = (time - speed) * speed
     if distance > distance_record:
         left = speed
