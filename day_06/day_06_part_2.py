@@ -21,4 +21,5 @@ for speed in range(left, time + 1):
         break
 
 right = time - left
-print(right - left + 1)
+ans = right - left + 1
+print(ans)
