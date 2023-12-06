@@ -2,7 +2,7 @@ with open("day_05.txt", "r") as file:
     data = file.read()
     seed_inputs, *data_blocks = data.split("\n\n")
 
-seed_inputs = list(map(int, seed_inputs.split(": ")[1].split()))
+seed_inputs = list(map(int, seed_inputs.split(":")[1].split()))
 seeds = []
 
 for i in range(0, len(seed_inputs), 2):
