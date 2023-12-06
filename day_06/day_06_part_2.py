@@ -1,26 +1,20 @@
-import math
-
 with open("day_06.txt", "r") as file:
     data = file.read()
     data = data.split("\n")
 
-time = None
-distance_record = None
+race_data = []
 
 for i, line in enumerate(data):
     line = int("".join(line.split()[1:]))
-    if i == 0:
-        time = line
-    else:
-        distance_record = line
+    race_data.append(line)
 
-a = -1
-b = time
-c = -distance_record
+left = None
+for speed in range(1, race_data[0] + 1):
+    distance = (race_data[0] - speed) * speed
+    if distance > race_data[1]:
+        left = speed
+        break
 
-x_1 = int((-b - math.sqrt(b ** 2 - 4 * a * c)) / (2 * a))
-x_2 = int((-b + math.sqrt(b ** 2 - 4 * a * c)) / (2 * a))
-
-ans = abs(x_1 - x_2)
-
+right = race_data[0] - left
+ans = right - left + 1
 print(ans)
