@@ -1,32 +1,37 @@
-from typing import List
+from collections import Counter
 
 CARD_MAPPING = {'T': 'A', 'J': 'B', 'Q': 'C', 'K': 'D', 'A': 'E'}
 
 
-def classify(hand: str) -> int:
-    counts = [hand.count(card) for card in hand]
-    if 5 in counts:
+def get_type(hand):
+    counts = Counter(hand)
+    if len(counts) == 1:
         return 6
-    if 4 in counts:
-        return 5
-    if 3 in counts:
-        if 2 in counts:
+    if len(counts) == 2:
+        if 4 in counts.values():
+            return 5
+        if 3 in counts.values() and 2 in counts.values():
             return 4
-        return 3
-    if counts.count(2) == 4:
-        return 2
-    if 2 in counts:
+    if len(counts) == 3:
+        if 3 in counts.values() and list(counts.values()).count(1) == 2:
+            return 3
+        if list(counts.values()).count(2) == 2:
+            return 2
+    if len(counts) == 4:
         return 1
     return 0
 
 
-def sorting(hand: str) -> (int, List[str]):
-    return classify(hand), [CARD_MAPPING.get(card, card) for card in hand]
+def get_order(hand):
+    return [CARD_MAPPING.get(card, card) for card in hand]
+
+
+def sorting(hand):
+    return get_type(hand), get_order(hand)
 
 
 plays = []
-
-with open("day_07.txt", "r") as file:
+with open("day_07.txt") as file:
     data = file.read().split("\n")
     for line in data:
         hand, bid = line.split()
@@ -35,8 +40,7 @@ with open("day_07.txt", "r") as file:
 plays.sort(key=lambda play: sorting(play[0]))
 
 ans = 0
-
 for rank, (hand, bid) in enumerate(plays, 1):
-    ans += rank * bid
+    ans += bid * rank
 
 print(ans)
