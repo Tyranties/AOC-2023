@@ -23,11 +23,22 @@ def get_type(hand):
 
 
 def find_all_combinations(hand):
-    if hand == "":
+    if not hand:
         return [""]
 
-    return [first_half + second_half for first_half in ("23456789TQKA" if hand[0] == 'J' else hand[0])
-            for second_half in find_all_combinations(hand[1:])]
+    current_card = hand[0]
+    if current_card == 'J':
+        possible_values = "23456789TQKA"
+    else:
+        possible_values = current_card
+
+    combinations = [
+        first_half + second_half
+        for first_half in possible_values
+        for second_half in find_all_combinations(hand[1:])
+    ]
+
+    return combinations
 
 
 def find_max_type(hand):
