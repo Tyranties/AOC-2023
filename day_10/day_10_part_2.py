@@ -50,24 +50,24 @@ grid = [['.' if (row, column) not in seen_pipes else grid[row][column]
          for column in range(len(grid[row]))] for row in range(len(grid))]
 
 
-count = 0
+interior = 0
 for row in grid:
     for i, char in enumerate(row):
         if char != ".":
             continue
 
         intersect = 0
-        pipes = []
+        corner_pipes = []
         for j in range(i + 1, len(row)):
             if row[j] in "|":
                 intersect += 1
             if row[j] in "FL":
-                pipes.append(row[j])
-            if len(pipes) != 0 and row[j] == "J" and pipes[-1] == "F" or row[j] == "7" and pipes[-1] == "L":
-                pipes.pop(-1)
+                corner_pipes.append(row[j])
+            if len(corner_pipes) != 0 and row[j] == "J" and corner_pipes[-1] == "F" or row[j] == "7" and corner_pipes[-1] == "L":
+                corner_pipes.pop(-1)
                 intersect += 1
 
         if intersect % 2 == 1:
-            count += 1
+            interior += 1
 
-print(count)
+print(interior)
