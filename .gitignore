@@ -1,1 +1,4 @@
+# Ignore all input files
 *.txt
+# Ignore template files
+Day_XX*
