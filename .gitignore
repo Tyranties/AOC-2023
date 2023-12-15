@@ -2,3 +2,5 @@
 *.txt
 # Ignore template files
 day_XX*
+# Ignore testing files
+*test.py
